@@ -22,7 +22,7 @@ response= client.detect_labels(Image={'Bytes':source_bytes},
 MaxLabels=10,
 MinConfidence=95)
 # print(response["Labels"]) 
-# print(response["Labels"][0]["Name"])  
+print(response["Labels"][0]["Confidence"], "%")  
 import io
 import requests
 from io import BytesIO
@@ -35,7 +35,7 @@ data = files.content
 df = pd.read_csv(BytesIO(data), usecols=['Name','Type']) #unprocessed data
 # print few rows
 df.head()
-print(df)
+# print(df)
 object=response["Labels"][0]["Name"]
 nrow,_ = df.shape
 #display circles represent for patients
