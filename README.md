@@ -26,6 +26,11 @@ cd aws
 
 python rekognitionMerge.py
 
+Press SPACE to capture 
+
+ESC to close capturinng 
+
 UI: [https://imgur.com/a/Z7oCWOY](https://imgur.com/a/Z7oCWOY)
 
 Database: shorturl.at/tKUZ5
+
