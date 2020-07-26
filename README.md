@@ -30,7 +30,7 @@ Press SPACE to capture
 
 ESC to close capturinng 
 
-UI: [https://imgur.com/a/Z7oCWOY](https://imgur.com/a/Z7oCWOY)
+UI: [https://imgur.com/a/P7nY0HB](https://imgur.com/a/P7nY0HB)
 
 Database: shorturl.at/tKUZ5
 
