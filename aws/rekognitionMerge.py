@@ -1,5 +1,31 @@
 import csv
 import boto3
+import numpy as np
+import cv2
+
+cam = cv2.VideoCapture(0)
+cv2.namedWindow("test")
+img_counter = 0
+
+while True:
+    ret, frame = cam.read()
+    cv2.imshow("test", frame)
+    if not ret:
+        break
+    k = cv2.waitKey(1)
+
+    if k%256 == 27:
+        print("Escape hit, closing...")
+        break
+    elif k%256 == 32:
+        img_name = "opencv_frame_{}.png".format(img_counter)
+        cv2.imwrite(img_name, frame)
+        print("{} written!".format(img_name))
+        img_counter += 1
+
+cam.release()
+
+cv2.destroyAllWindows()
 access_key_id = "AKIASQUY6JJGAWRLTIOO"
 secret_access_key = "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"
 region = "ap-southeast-1"
@@ -11,7 +37,7 @@ region = "ap-southeast-1"
 #     print(line)
 #     access_key_id= line[3]
 #     secret_access_key= line[4]
-photo= 'chai.jpg' 
+photo= 'opencv_frame_0.png' 
 client= boto3.client('rekognition',region_name="ap-southeast-1",
 # region=region,
  aws_access_key_id= access_key_id,
@@ -21,8 +47,6 @@ with open(photo,'rb')as source_image:
 response= client.detect_labels(Image={'Bytes':source_bytes},
 MaxLabels=10,
 MinConfidence=95)
-# print(response["Labels"]) 
-print(response["Labels"][0]["Confidence"], "%")  
 import io
 import requests
 from io import BytesIO
@@ -42,6 +66,8 @@ nrow,_ = df.shape
 for i in range(0, nrow):
     name = df.iloc[i,0]
     if (str(name) == object):
-        print(df['Type'][i])
+        print(response["Labels"][0]["Name"])
+        print(response["Labels"][0]["Confidence"], "%") 
+        print(df['Type'][i]) 
     # else:
     #     print("Not given")
