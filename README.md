@@ -14,3 +14,5 @@ Run:
     Open terminal
     cd aws
     python <<file name>>
+UI: https://imgur.com/a/Z7oCWOY
+Database: shorturl.at/tKUZ5
